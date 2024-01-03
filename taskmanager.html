@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Management Page</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background-color: #f4f4f4;
+    }
+    header {
+      background-color: #f4f4f4;
+      color: #201e1e;
+      padding: 10px;
+      text-align: center;
+    }
+    main {
+      display: flex;
+      flex: 1;
+      padding: 20px;
+    }
+    .square {
+      display: flex;
+      flex: 2;
+    }
+    .quadrant, .doneTable {
+      flex: 1;
+      margin: 10px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      margin-bottom: 20px;
+      font-size: 1.5em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: inherit;
+    }
+    .urgentImportant {
+      background-color: #FF6347; 
+    }
+    .notUrgentImportant {
+      background-color: #87CEEB; 
+    }
+    .urgentNotImportant {
+      background-color: #F0E68C; 
+    }
+    .notUrgentNotImportant {
+      background-color: #98FB98; 
+    }
+    .done {
+      background-color: #7CFC00; 
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      margin-bottom: 15px;
+      padding: 2px;
+      cursor: grab;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 5px;
+    }
+    .done {
+      color: green;
+    }
+    .task-content {
+      flex: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .checkmark,
+    .delete {
+      margin-left: 10px;
+      background-color: transparent;
+      border: none;
+      font-size: 14px;
+      cursor: pointer;
+      color: inherit;
+    }
+    .checkmark {
+      color: green;
+    }
+    input {
+      padding: 8px;
+      margin-bottom: 10px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    button {
+      padding: 8px;
+      cursor: pointer;
+      border: none;
+      color: #fff;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+    .delete {
+      color: red;
+      display: none;
+    }
+    .container {
+      display:grid;
+      grid-template-columns: 1fr 2fr;
+      grid-template-columns: 1fr 2fr;
+
+    }
+        
+    nav {
+            background-color: #BD9588; 
+            padding: 1em;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        nav a:hover {
+            color: #825745; 
+        }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+			<li><a href="anasayfa.html">Home</a></li>
+            <li><a href="notlarım.html">Notes</a></li>
+            <li><a href="havadurumu.html">Weather</a></li>
+            <li><a href="BMI.html">BMI</a></li>
+            <li><a href="recipie.html">Recipies</a></li>
+            <li><a href="zodiacs4.html">Zodiacs</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="taskmanager.html">Tasks</a></li>
+            <li><a href="shoppinglist.html">Shopping List</a></li>
+            <li><a href="HABIT15.html">My Habits</a></li>
+            <li><a href="saat.html">Time</a></li>
+            <li><a href="yenigoal.html">New Goals</a></li>
+            <li><a href="WWW.html">Travel Journal</a></li>
+    </ul>
+</nav>  
+<header>
+  <h1>Task Management Page</h1>
+</header>
+
+<main>
+  <div class="square">
+    <div class="quadrant urgentImportant" id="urgentImportant">
+      <h2><i class="fas fa-exclamation-triangle"></i><br> Urgent and Important</h2>
+      <ul id="urgentImportantList" ondrop="drop(event, 'urgentImportantList')" ondragover="allowDrop(event)"></ul>
+      <input type="text" id="taskInputUI1" placeholder="Add new task">
+      <button class="add urgentImportant" onclick="addTask('urgentImportantList', 'taskInputUI1')">
+        <i class="fas fa-plus"></i> Add
+      </button>
+    </div>
+
+    <div class="quadrant notUrgentImportant" id="notUrgentImportant">
+      <h2><i class="fas fa-lightbulb"></i><br> Not Urgent but Important</h2>
+      <ul id="notUrgentImportantList" ondrop="drop(event, 'notUrgentImportantList')" ondragover="allowDrop(event)"></ul>
+      <input type="text" id="taskInputUI2" placeholder="Add new task">
+      <button class="add notUrgentImportant" onclick="addTask('notUrgentImportantList', 'taskInputUI2')">
+        <i class="fas fa-plus"></i> Add
+      </button>
+    </div>
+  </div>
+
+  <div class="square">
+    <div class="quadrant urgentNotImportant" id="urgentNotImportant">
+      <h2><i class="fas fa-clock"></i><br> Urgent but Not Important</h2>
+      <ul id="urgentNotImportantList" ondrop="drop(event, 'urgentNotImportantList')" ondragover="allowDrop(event)"></ul>
+      <input type="text" id="taskInputUI3" placeholder="Add new task">
+      <button class="add urgentNotImportant" onclick="addTask('urgentNotImportantList', 'taskInputUI3')">
+        <i class="fas fa-plus"></i> Add
+      </button>
+    </div>
+
+    <div class="quadrant notUrgentNotImportant" id="notUrgentNotImportant">
+      <h2><i class="fas fa-cog"></i><br> Not Urgent and Not Important</h2>
+      <ul id="notUrgentNotImportantList" ondrop="drop(event, 'notUrgentNotImportantList')" ondragover="allowDrop(event)"></ul>
+      <input type="text" id="taskInputUI4" placeholder="Add new task">
+      <button class="add notUrgentNotImportant" onclick="addTask('notUrgentNotImportantList', 'taskInputUI4')">
+        <i class="fas fa-plus"></i> Add
+      </button>
+    </div>
+  </div>
+
+  <div class="doneTable">
+    <h2><i class="fas fa-plus"></i><br> Done</h2>
+    <ul id="doneList" ondrop="drop(event, 'doneList')" ondragover="allowDrop(event)"></ul>
+  </div>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+<script>
+  function allowDrop(event) {
+    event.preventDefault();
+  }
+
+  function drag(event) {
+    event.dataTransfer.setData("text", event.target.id);
+  }
+
+  function drop(event, listId) {
+    event.preventDefault();
+    const data = event.dataTransfer.getData("text");
+    const draggedElement = document.getElementById(data);
+
+    if (listId === 'doneList') {
+      draggedElement.querySelector('.checkmark').remove();
+      draggedElement.querySelector('.delete').remove();
+      document.getElementById('doneList').appendChild(draggedElement);
+    } else {
+      draggedElement.querySelector('.delete').style.display = 'none';
+      document.getElementById(listId).appendChild(draggedElement);
+    }
+  }
+
+  function addTask(listId, inputId) {
+    const taskInput = document.getElementById(inputId);
+    const taskText = taskInput.value.trim();
+    if (taskText === '') return;
+
+    const newTask = document.createElement('li');
+    newTask.id = 'task_' + Date.now();
+    newTask.draggable = true;
+    newTask.addEventListener('dragstart', drag);
+
+    const checkBox = document.createElement('button');
+    checkBox.innerHTML = '<i class="fas fa-check"></i>';
+    checkBox.className = 'checkmark';
+    checkBox.addEventListener('click', function () {
+      document.getElementById('doneList').appendChild(newTask);
+      this.remove();
+      newTask.querySelector('.delete').style.display = 'inline-block';
+    });
+
+    const deleteButton = document.createElement('button');
+    deleteButton.innerHTML = '<i class="fas fa-times"></i>';
+    deleteButton.className = 'delete';
+    deleteButton.style.display = 'none';
+    deleteButton.addEventListener('click', function () {
+      newTask.remove();
+    });
+
+    newTask.innerHTML = `<span class="task-content">${taskText}</span>`;
+    newTask.appendChild(checkBox);
+    newTask.appendChild(deleteButton);
+
+    document.getElementById(listId).appendChild(newTask);
+    taskInput.value = '';
+  }
+</script>
+
+</body>
+</html>

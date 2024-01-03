@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: white; 
+            color: white; 
+            line-height: 1.6;
+            margin: 0;
+            overflow: auto;
+        }
+
+        nav {
+            background-color: #BD9588; 
+            padding: 1em;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        nav a:hover {
+            color: #825745; 
+        }
+
+        main {
+            position: centralized;
+            padding: 20px;
+            text-align: center;
+            height: 80vh; 
+        }
+	.input-section {
+            width: 950px; 
+            padding: 10px;
+            margin: 10px auto;
+            background-color: #f0f0f0;
+            border: 2px solid #333;
+        }
+
+        .input-section label,
+        .input-section input,
+        .input-section p {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        
+
+        @keyframes shakeText {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        footer {
+            background-color: #BD9588; 
+            color: white;
+            padding: 1em;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin-bottom: 0.5em;
+            font-size: 2.5em; 
+            color: blackBMI Calculator; 
+        }
+
+        p {
+            font-size: 1.0em; 
+            line-height: 2em;
+            color: #333; 
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+    <script src="main.js" defer></script>
+</head>
+<body>
+    <header>
+
+    </header>
+    <nav>
+        <ul>
+            <li><a href="anasayfa.html">Home</a></li>
+            <li><a href="notlarım.html">Notes</a></li>
+            <li><a href="havadurumu.html">Weather</a></li>
+            <li><a href="BMI.html">BMI</a></li>
+            <li><a href="recipie.html">Recipies</a></li>
+            <li><a href="zodiacs4.html">Zodiacs</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="taskmanager.html">Tasks</a></li>
+            <li><a href="shoppinglist.html">Shopping List</a></li>
+            <li><a href="HABIT15.html">My Habits</a></li>
+            <li><a href="saat.html">Time</a></li>
+            <li><a href="yenigoal.html">New Goals</a></li>
+            <li><a href="WWW.html">Travel Journal</a></li>
+           
+        </ul>
+    </nav>
+    <main style=color:black;>
+ <h1>BMI Calculator</h1>
+
+  <div class="input-section" align="center">
+            <form id="formOfHeight">
+                <label for="heightInput">Height (in meters):</label>
+                <input type="number" step="0.01" id="heightInput" name="height">
+                <p>You will log in to the counter form. For example, if your height is 173cm, enter <b>1.73</b>.</p>
+            </form>
+        </div>
+
+        <div class="input-section" align="center">
+            <form id="formOfWeight">
+                <label for="weightInput">Weight (in kilograms):</label>
+                <input type="number" step="0.1" id="weightInput" name="weight">
+            </form>
+        </div>
+
+        <div class="input-section" align="center">
+            <form id="formOfAge">
+                <label for="ageInput">Age :</label>
+                <input type="number" id="ageInput" name="age">
+            </form>
+        </div>
+
+        <div class="input-section" align="center">
+            <form id="formOfSex">
+                <label for="sexInput">Sex :</label>
+                <input type="text" id="sexInput" name="sex">
+                <p>Only type <b>"male"</b> or <b>"female"</b>. Otherwise, the system cannot generate the result.</p>
+            </form>
+        </div>
+
+        <div class="input-section" align="center">
+            <form id="formOfActivity">
+                <label for="activityLevelInput">Activity Level :</label>
+                <input type="text" id="activityLevelInput" name="activity">
+                <p>How active are you in daily life? Immobile=x, low mobility=y, moderately mobile=z, highly mobile=q, very highly mobile=w. Only type <b>x,y,z,q,w</b> according to your life mobility.</p>
+            </form>
+        </div>
+
+        
+            <form id="formOfBMI">
+                <input type="submit" value="Calculate BMI"><br>
+            </form>
+
+        
+
+        <div id="displayBMI" class="input-section"></div>
+
+  <script>
+    
+    const form = document.getElementById('formOfBMI');
+
+    
+    form.addEventListener('submit', function(event) {
+      event.preventDefault(); 
+
+      
+      const activityLevels = {
+        'x': 1.2,
+        'y': 1.375,
+        'z': 1.55,
+        'q': 1.725,
+        'w': 1.9
+      };
+
+      const sex = document.getElementById('sexInput').value.toLowerCase();
+      const activity = document.getElementById('activityLevelInput').value.toLowerCase();
+      const age = parseFloat(document.getElementById('ageInput').value);
+      const height = parseFloat(document.getElementById('heightInput').value);
+      const weight = parseFloat(document.getElementById('weightInput').value);
+
+      
+      const theBMI = weight / (height * height);
+
+      
+      let adjustedBMI;
+      if (sex === "female") {
+        adjustedBMI = 655 + (9.6 * weight) + (1.8 * height * 100) - (4.7 * age);
+      } else if (sex === "male") {
+        adjustedBMI = 66 + (13.7 * weight) + (5 * height * 100) - (6.8 * age);
+      } else {
+        alert("Please enter 'male' or 'female' for sex.");
+        return; 
+      }
+
+      
+      if (activityLevels.hasOwnProperty(activity)) {
+        adjustedBMI *= activityLevels[activity];
+      } else {
+        alert("Please enter a valid activity level: 'x', 'y', 'z', 'q', or 'w'.");
+        return; 
+      }
+
+      
+      const displayDiv = document.getElementById('displayBMI');
+      displayDiv.innerHTML = `<h3>Calculated BMIs:</h3>
+                              <p>Your BMI is: ${theBMI.toFixed(2)}</p>
+                              <p>Adjusted BMI (Calorie Need) is: ${adjustedBMI.toFixed(2)}</p><br>
+                              <p><b>System Comment:</b></p>
+                              <p>${getBMICategory(theBMI)}</p>`;
+                              
+    });
+
+    
+    function getBMICategory(bmiValue) {
+      if (bmiValue <= 18.5) {
+        return "You are skinny.";
+      } else if (bmiValue > 18.5 && bmiValue <= 24.9) {
+        return "You have normal weight.";
+      } else if (bmiValue >= 25.0 && bmiValue <= 29.9) {
+        return "You are overweight.";
+      } else if (bmiValue >= 30.0 && bmiValue <= 34.9) {
+        return "You are obese (1st degree obesity).";
+      } else if (bmiValue >= 35.0 && bmiValue <= 39.9) {
+        return "You are extremely obese (2nd degree obesity).";
+      } else {
+        return "You are morbidly obese (3rd degree obesity).";
+      }
+    }
+  </script>
+        
+    </main>
+  
+</body>
+</html>
+

@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F9E5DD;
+            color: white;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+nav {
+            background-color: #BD9588;
+            color: white;
+            padding: 1em;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        nav a:hover {
+            color: #825745;
+        }
+
+
+        main {
+            position: relative;
+            padding: 20px;
+            text-align: center;
+        }
+
+        textarea {
+            width: 80%;
+            height: 280px;
+            margin: 20px auto;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            resize: none;
+            background-color: white;
+            color: black;
+        }
+
+        button {
+            background-color: #BD9588;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #825745;
+        }
+
+        .message-container {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #BD9588;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            display: none;
+            transition: all 0.3s ease;
+        }
+
+        .message-container.show {
+            display: block;
+        }
+
+        .message-text {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .saved-notes {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .note-box {
+            position: relative;
+            background-color: #BD9588;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 5px;
+            text-align: left;
+            max-width: 300px;
+            word-wrap: break-word;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .note-box:hover {
+            transform: scale(1.1);
+        }
+
+        .delete-button {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: #c0392b;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            padding: 5px 8px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: background-color 0.3s ease;
+            display: none;
+        }
+
+        .delete-button:hover {
+            background-color: #825745;
+        }
+
+        .note-box:hover .delete-button {
+            display: block;
+        }
+
+        .full-note {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #BD9588;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            display: none;
+            z-index: 999;
+            overflow-y: auto;
+        }
+
+        footer {
+            background-color: #8E44AD;
+            color: white;
+            padding: 1em;
+            text-align: center;
+            position: fixed;
+            bottom: 10;
+            width: 100%;
+            height: 15px; 
+            box-shadow: 0 -6px 6px rgba(0, 0, 0, 0.1);
+        }
+
+       
+    </style>
+    
+</head>
+<body>
+
+ <nav>
+        <ul>
+		    <li><a href="anasayfa.html">Home</a></li>
+            <li><a href="notlarım.html">Notes</a></li>
+            <li><a href="havadurumu.html">Weather</a></li>
+            <li><a href="BMI.html">BMI</a></li>
+            <li><a href="recipie.html">Recipies</a></li>
+            <li><a href="zodiacs4.html">Zodiacs</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="taskmanager.html">Tasks</a></li>
+            <li><a href="shoppinglist.html">Shopping List</a></li>
+            <li><a href="HABIT15.html">My Habits</a></li>
+            <li><a href="saat.html">Time</a></li>
+            <li><a href="yenigoal.html">New Goals</a></li>
+            <li><a href="WWW.html">Travel Journal</a></li>
+        </ul>
+    </nav>
+    <main>
+        <textarea id="noteArea" placeholder="Enter your note here..." onpaste="handlePaste(event)" onkeydown="handleKeyDown(event)"></textarea>
+        <button onclick="saveAndShowMessage()">Save</button>
+        <div class="message-container" onclick="hideMessage()">
+            <div class="message-text" id="messageText"></div>
+        </div>
+        <div class="saved-notes" id="savedNotes"></div>
+        <div class="full-note" id="fullNote" onclick="hideFullNote()">
+            <div id="fullNoteContent"></div>
+        </div>
+    </main>
+    
+
+    <script>
+        window.onload = function() {
+            loadNotes();
+        };
+
+        function saveAndShowMessage() {
+            var note = document.getElementById("noteArea").value;
+
+            saveNoteToStorage(note);
+
+            showMessage("Your note has been successfully saved!");
+
+            loadNotes();
+
+            clearTextarea();
+        }
+
+        function clearTextarea() {
+            document.getElementById("noteArea").value = "";
+        }
+
+        function loadNotes() {
+            var savedNotes = getSavedNotes();
+
+            displayNotes(savedNotes);
+        }
+
+        function saveNoteToStorage(note) {
+            var savedNotes = getSavedNotes();
+
+            savedNotes.push(note);
+
+            localStorage.setItem("savedNotes", JSON.stringify(savedNotes));
+        }
+
+        function getSavedNotes() {
+            var savedNotesString = localStorage.getItem("savedNotes");
+
+            if (!savedNotesString) {
+                return [];
+            }
+
+            return JSON.parse(savedNotesString);
+        }
+
+        function displayNotes(notes) {
+            var savedNotesContainer = document.getElementById("savedNotes");
+
+            savedNotesContainer.innerHTML = "";
+
+            notes.forEach(function(note, index) {
+                var noteBox = document.createElement("div");
+                noteBox.className = "note-box";
+                noteBox.textContent = note;
+
+                var deleteButton = document.createElement("button");
+                deleteButton.className = "delete-button";
+                deleteButton.textContent = "delete";
+                deleteButton.onclick = function(event) {
+                    event.stopPropagation();
+                    deleteNoteAndShowMessage(index);
+                };
+
+                noteBox.appendChild(deleteButton);
+
+                noteBox.onclick = function() {
+                    showFullNoteAndDeleteOption(note, index);
+                };
+
+                savedNotesContainer.appendChild(noteBox);
+            });
+        }
+
+        function deleteNoteAndShowMessage(index) {
+            var savedNotes = getSavedNotes();
+
+            savedNotes.splice(index, 1);
+
+            localStorage.setItem("savedNotes", JSON.stringify(savedNotes));
+
+            showMessage("Note successfully deleted!");
+
+            loadNotes();
+        }
+
+        function showMessage(message) {
+            var messageContainer = document.querySelector(".message-container");
+            var messageText = document.getElementById("messageText");
+
+            messageText.textContent = message;
+            messageContainer.classList.add("show");
+
+            setTimeout(function() {
+                hideMessage();
+            }, 3000);
+        }
+
+        function hideMessage() {
+            var messageContainer = document.querySelector(".message-container");
+            messageContainer.classList.remove("show");
+        }
+
+        function showFullNoteAndDeleteOption(note, index) {
+            var fullNoteContainer = document.getElementById("fullNote");
+            var fullNoteContent = document.getElementById("fullNoteContent");
+
+            fullNoteContent.textContent = note;
+            fullNoteContainer.style.display = "block";
+
+            var deleteButton = document.createElement("button");
+            deleteButton.className = "delete-button";
+            deleteButton.textContent = "Sil";
+            deleteButton.onclick = function() {
+                deleteNoteAndHideFullNoteOption(index);
+            };
+
+            fullNoteContainer.appendChild(deleteButton);
+        }
+
+        function hideFullNote() {
+            var fullNoteContainer = document.getElementById("fullNote");
+            fullNoteContainer.style.display = "none";
+        }
+
+        function deleteNoteAndHideFullNoteOption(index) {
+            var savedNotes = getSavedNotes();
+
+            savedNotes.splice(index, 1);
+
+            localStorage.setItem("savedNotes", JSON.stringify(savedNotes));
+
+            hideFullNote();
+
+            showMessage("Note successfully deleted!");
+
+            loadNotes();
+        }
+
+        function handlePaste(event) {
+            var clipboardData, pastedText;
+
+            event.preventDefault();
+
+            clipboardData = event.clipboardData || window.clipboardData;
+            pastedText = clipboardData.getData('text/plain');
+
+            document.getElementById("noteArea").value += pastedText;
+        }
+
+        function handleKeyDown(event) {
+            if (event.key === "Enter") {
+                saveAndShowMessage();
+                event.preventDefault(); 
+            }
+        }
+    </script>
+</body>
+</html>

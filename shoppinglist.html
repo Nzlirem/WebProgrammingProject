@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping List </title>
+    <style>
+
+            body {
+                background: linear-gradient(to right, #e0e3f200, #e2cbb567);
+                margin: 0;
+                font-family: 'Arial', sans-serif;
+            }
+
+            #app {
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 20px;
+                background-color: none; 
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+
+            h1,
+            button {
+                text-align: center;
+                color: #E2CBB5; 
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            input,
+            select,
+            button {
+                outline: none;
+                border: 2px solid #E2CBB5; 
+                border-radius: 5px;
+                padding: 10px;
+                outline: none;
+                margin: 5px;
+                box-sizing: border-box;
+            }
+
+            button:hover {
+                background-color: #E2CBB5;
+                color: #BD9588; 
+                cursor: pointer;
+            }
+
+            .list-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin: 10px 0;
+                border: 1px solid #D3B89E; 
+                border-radius: 10px;
+                padding: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+
+            .list-container h2 {
+                display: flex;
+                justify-content: space-between;
+                width: calc(97% + 22px);
+                background-color: #BD9588; 
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                text-align: center;
+                padding: 10px;
+                margin: -10px -10px 5px -10px;
+                border-radius: 10px;
+                font-size: 1.3rem;
+            }
+
+            .item {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            .item span,
+            .item input,
+            .item button {
+                background-color: #f0f0f0;
+                text-align: center;
+                padding: 8px;
+                border-radius: 10px;
+            }
+
+            .remove-item-button {
+                color: #d52121; 
+                background: none;
+                border: none;
+                font-size: 1rem;
+                cursor: pointer;
+            }
+
+            .total {
+                font-weight: bold;
+                font-size: 1.2rem;
+                margin-top: 10px;
+            }
+
+            .item {
+                transform: scale(0.9);
+                opacity: 0.6; 
+                transition: all 0.3s ease-in-out;
+            }
+
+            .item:hover {
+                transform: scale(1);
+                opacity: 1;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            }
+
+            .input-container {
+                position: relative;
+            }
+
+            .button-addon {
+                position: absolute;
+                right: 8px;
+                top: 50%;
+                transform: translateY(-50%);
+                font-size: 1.4rem; 
+                color: #378634; 
+                background-color: #9ed3aa; 
+                padding: 5px; 
+                border-radius: 0 3px 3px 0;
+                cursor: pointer;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+            }
+
+            input.new-item {
+                background: none;
+                padding-right: 80px; 
+            }
+
+            button.add-list-button {
+                background-color: #f0ece9; 
+                color: #825745; 
+                border: #825745; 
+                border-radius: 10px;
+                padding: 15px;
+                margin: 10px 0;
+                cursor: pointer;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            button.add-list-button:hover {
+                background-color: #BD9588; 
+            }
+
+            #app {
+                text-align: center;
+            }
+
+            .new-item::placeholder {
+                color: #999; 
+            }
+
+        .new-item::placeholder {
+        color: #999; 
+        }
+
+        nav {
+            background-color: #BD9588; 
+            padding: 1em;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        nav a:hover {
+            color: #825745; 
+        }
+        
+</style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="anasayfa.html">Home</a></li>
+            <li><a href="notlarım.html">Notes</a></li>
+            <li><a href="havadurumu.html">Weather</a></li>
+            <li><a href="BMI.html">BMI</a></li>
+            <li><a href="recipie.html">Recipies</a></li>
+            <li><a href="zodiacs4.html">Zodiacs</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="taskmanager.html">Tasks</a></li>
+            <li><a href="shoppinglist.html">Shopping List</a></li>
+            <li><a href="HABIT15.html">My Habits</a></li>
+            <li><a href="saat.html">Time</a></li>
+            <li><a href="yenigoal.html">New Goals</a></li>
+            <li><a href="WWW.html">Travel Journal</a></li>
+        </ul>
+    </nav>
+
+    <h1> Shopping List </h1>
+<div id="app">
+    <div v-for="(list, index) in lists" :key="index" class="list-container">
+        <h2>
+            Shopping List {{ index + 1 }} - {{ list.type }}
+            <select v-model="list.type" >
+                <option v-for="type in shoppingTypes" :key="type">{{ type }}</option>
+            </select>
+            <button @click="deleteList(index)" class="delete-list-button">Delete List</button>
+        </h2>
+        <div v-for="(item, itemIndex) in list.items" :key="itemIndex" class="item">
+            <span>{{ item.name }}</span>
+            <div>
+                <input type="number" v-model="item.price" placeholder="Price">
+                <button @click="removeItem(index, itemIndex)" class="remove-item-button">&#10006;</button>
+            </div>
+        </div>
+        <div class="total">Total: ${{ getTotal(index).toFixed(2) }}</div>
+        <div class="input-container">
+            <input class="new-item" v-model="list.newItem" placeholder="New Item">
+            <div class="button-addon" @click="addItem(index)">+</div>
+        </div>
+    </div>
+    <button @click="addList" class="add-list-button">Add Shopping List</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            lists: [
+                { items: [], newItem: '', type: 'Groceries' },
+                { items: [], newItem: '', type: 'Electronics' }
+            ],
+            shoppingTypes: ['Groceries', 'Electronics', 'Clothing', 'Books', 'Other']
+        },
+        methods: {
+            addList() {
+                this.lists.push({ items: [], newItem: '', type: 'Other' });
+            },
+            deleteList(index) {
+                this.lists.splice(index, 1);
+            },
+            addItem(listIndex) {
+                const newItem = {
+                    name: this.lists[listIndex].newItem,
+                };
+                this.lists[listIndex].items.push(newItem);
+                this.lists[listIndex].newItem = '';
+            },
+            removeItem(listIndex, itemIndex) {
+                this.lists[listIndex].items.splice(itemIndex, 1);
+            },
+            getTotal(listIndex) {
+                return this.lists[listIndex].items.reduce((total, item) => total + parseFloat(item.price) || 0, 0);
+            },
+        }
+    });
+</script>
+
+</body>
+</html>

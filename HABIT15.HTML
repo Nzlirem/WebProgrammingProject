@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Habit Tracker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+	  line-height: 1.6;
+      overflow: hidden;
+	  background-color:#FEF4F1;
+    }
+
+
+		nav {
+     position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: #BD9588;
+    color: white;
+    padding: 1em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    z-index: 1000; /* Ensure the navigation bar is on top */
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        nav a:hover {
+            color: #6E0D2C;
+        }
+
+    #container {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      max-width: 800px;
+      width: 100%;
+    }
+
+    #leftSide {
+      flex: 1;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    #rightSide {
+      flex: 1;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .calendar {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 5px;
+      margin-bottom: 20px;
+    }
+
+    .day {
+      width: 30px;
+      height: 30px;
+      border: 1px solid #ddd;
+      text-align: center;
+      line-height: 30px;
+      cursor: pointer;
+    }
+
+    .completed {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    .note {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    #userInput {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+    }
+
+    #habitTitle,
+    #durationInput {
+      margin-bottom: 10px;
+    }
+
+    #Goal {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      margin-bottom: 20px;
+    }
+
+    #goalTitle {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    #goalDays,
+    #totalDaysDisplay {
+      margin-top: 10px;
+    }
+
+    #congratsTitle {
+      font-size: 24px;
+      color: #4CAF50;
+      margin-top: 20px;
+    }
+	
+	input{
+		background-color:#FEF9F8;}
+  </style>
+</head>
+<body>
+
+<nav>
+        <ul>
+            <li><a href="anasayfa.html">Home</a></li>
+            <li><a href="notlarım.html">Notes</a></li>
+            <li><a href="havadurumu.html">Weather</a></li>
+            <li><a href="BMI.html">BMI</a></li>
+            <li><a href="recipie.html">Recipies</a></li>
+            <li><a href="zodiacs4.html">Zodiacs</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="taskmanager.html">Tasks</a></li>
+            <li><a href="shoppinglist.html">Shopping List</a></li>
+            <li><a href="HABIT15.html">My Habits</a></li>
+            <li><a href="saat.html">Time</a></li>
+            <li><a href="yenigoal.html">New Goals</a></li>
+            <li><a href="WWW.html">Travel Journal</a></li>
+        </ul>
+    </nav>
+<div style="background-color:#FAEEEA;border-radius: 20px;padding: 20px;margin-top:20px;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">	
+<h2 id="currentMonth"  style="text-align:center; margin-bottom:25px"></h2>
+
+  <div id="container">
+    <div id="leftSide">
+	
+	  <div id="Goal">
+        <p id="goalTitle">GOAL</p>
+        <p id="goalDays">0</p>
+      </div>
+	  
+      <p class="note"><q><i>One isn't necessarily born with courage, but one is born with potential. Without courage, we cannot practice any other virtue with consistency. We can't be kind, true, merciful, generous, or honest.</i></q></p>
+
+      <div id="totalDays" style="text-align:left";>
+        <p>Total Completed Days: <span id="totalDaysDisplay">0</span></p>
+      </div>
+    </div>
+
+    <div id="rightSide">
+      <div class="calendar" id="calendar"></div>
+    </div>
+  </div>
+
+ <div id="userInput" style="margin-top:10px">
+    <div id="habitTitle">
+      <label for="habitInput">What is your new habit?</label>
+      <input type="text" id="habitInput" oninput="updateHabitTitle(this.value)">
+    </div>
+    <div id="durationInputContainer">
+      <label for="durationInput">How long do you want to achieve this?</label>
+      <input type="text" id="durationInput" oninput="updateGoalDays(this.value)">
+    </div>
+  </div>
+</div>
+  <script>
+	  
+	  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+	const currentMonth = months[new Date().getMonth()];
+
+	document.getElementById('currentMonth').textContent = currentMonth;
+
+
+    const calendar = document.getElementById('calendar');
+    let totalCompletedDays = 0;
+
+    for (let i = 0; i < 6; i++) {
+      for (let day = 1; day <= 5; day++) {
+        const dayElement = document.createElement('div');
+        dayElement.classList.add('day');
+        dayElement.textContent = i * 5 + day;
+
+        dayElement.addEventListener('click', () => {
+          toggleCompleted(dayElement);
+          updateTotalDays();
+        });
+
+        calendar.appendChild(dayElement);
+      }
+    }
+
+    function toggleCompleted(dayElement) {
+      dayElement.classList.toggle('completed');
+    }
+
+    function updateTotalDays() {
+      const completedDays = document.querySelectorAll('.completed').length;
+      totalCompletedDays = completedDays;
+      document.getElementById('totalDaysDisplay').textContent = totalCompletedDays;
+	}
+	
+
+    function updateHabitTitle(value) {
+      document.getElementById('goalTitle').textContent = value ? value : 'GOAL';
+    }
+
+	function updateGoalDays(value) {
+      document.getElementById('goalDays').textContent = value ? value : '0';
+    }
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: white; 
+            color: white; 
+            line-height: 1.6;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        nav {
+            background-color: #BD9588; 
+            padding: 1em;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        nav a:hover {
+            color: #825745; 
+        }
+
+        main {
+            position: relative;
+            padding: 20px;
+            text-align: center;
+            height: 80vh; 
+        }
+
+        .robot-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .robot {
+            width: 120px; 
+            height: 120px; 
+        }
+
+        .speech-bubble {
+            background-color: #BD9588; 
+            color: white;
+            padding: 20px; 
+            border-radius: 15px; 
+            max-width: 250px; 
+            text-align: center;
+            animation: shakeText 2s ease infinite;
+        }
+
+        @keyframes shakeText {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        footer {
+            background-color: #BD9588; 
+            color: white;
+            padding: 1em;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin-bottom: 0.5em;
+            font-size: 2.5em; 
+            color: #800080; 
+        }
+
+        p {
+            font-size: 1.2em; 
+            line-height: 2em;
+            color: #333; 
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+    
+</head>
+<body>
+    <header>
+
+    </header>
+    <nav>
+        <ul>
+            <li><a href="anasayfa.html">Home</a></li>
+            <li><a href="notlarım.html">Notes</a></li>
+            <li><a href="havadurumu.html">Weather</a></li>
+            <li><a href="BMI.html">BMI</a></li>
+            <li><a href="recipie.html">Recipies</a></li>
+            <li><a href="zodiacs4.html">Zodiacs</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="taskmanager.html">Tasks</a></li>
+            <li><a href="shoppinglist.html">Shopping List</a></li>
+            <li><a href="HABIT15.html">My Habits</a></li>
+            <li><a href="saat.html">Time</a></li>
+            <li><a href="yenigoal.html">New Goals</a></li>
+            <li><a href="WWW.html">Travel Journal</a></li>
+        </ul>
+    </nav>
+	
+    <main>
+	
+        <div class="robot-container">
+            <img class="robot" src="chatbot.png" alt="Robot Görseli">
+            <div class="speech-bubble">How can I help you today?</div>
+        </div>
+		
+    </main>
+	
+    <footer>
+        <p>&copy; 2023 Personal Assistant</p>
+    </footer>
+	
+</body>
+</html>

@@ -1,0 +1,437 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Recipes</title>
+ <style>
+    .hidden {
+      display: none;
+    }
+
+
+.recipeContent {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 20px;
+    }
+
+    .imageContainer {
+      flex-basis: 45%;
+      margin-right: 20px;
+    }
+
+    .recipeDetails {
+      flex-basis: 50%;
+    }
+
+    .recipeContent img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    .recipeDetails ul {
+      padding-left: 0;
+      text-align: left;
+    }
+
+    .recipeDetails ul li {
+      margin-bottom: 10px;
+    }
+
+    /* Ortalamak için ana içerik */
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+
+    }
+    .recipeDetails { 
+      /* Yazıları sola yasla */
+      margin-left: 30px;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #f2f2f2;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+    }
+    img {
+      width: 450px; 
+      height: 300px; 
+    }
+
+    main {
+      width: 70%;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+      background-color: #faf0e6; 
+      margin: auto; 
+     }
+
+  
+
+    .fullRecipe {
+      margin-top: 20px;
+    }
+    
+    nav {
+      background-color: #BD9588; 
+      padding: 1em;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      display: inline;
+      margin-right: 15px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      font-size: 14px;
+      transition: color 0.3s ease;
+      text-transform: uppercase;
+    }
+
+    nav a:hover {
+      color: #825745; 
+    }
+ </style>
+</head>
+<body>
+  <nav>
+    <ul>
+			<li><a href="anasayfa.html">Home</a></li>
+            <li><a href="notlarım.html">Notes</a></li>
+            <li><a href="havadurumu.html">Weather</a></li>
+            <li><a href="BMI.html">BMI</a></li>
+            <li><a href="recipie.html">Recipies</a></li>
+            <li><a href="zodiacs4.html">Zodiacs</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="taskmanager.html">Tasks</a></li>
+            <li><a href="shoppinglist.html">Shopping List</a></li>
+            <li><a href="HABIT15.html">My Habits</a></li>
+            <li><a href="saat.html">Time</a></li>
+            <li><a href="yenigoal.html">New Goals</a></li>
+            <li><a href="WWW.html">Travel Journal</a></li>
+    </ul>
+  </nav>
+  <header>
+    <h1>Recipes</h1>
+  </header>
+<p style=background-color:white></p>  
+
+   <main id="recipeContainer">
+    <section class="recipe" id="menemenRecipe">
+      <div class="recipeContent">
+        <div class="imageContainer">
+          <h2>Menemen</h2>
+          <img src="menemen.jpg" alt="Menemen">
+        </div>
+        <div class="recipeDetails">
+          <p><b><i>Ingredients:</i></b></p>
+          <ul id="ingredientsList">
+            <li>2 tablespoons of oil</li>
+            <li>3 green peppers (finely chopped, after removing the stems and seeds)</li>
+            <li id="eggIngredient">3 eggs</li>
+          </ul>
+
+          <p><b>Total Calories:</b> <span id="totalCalories">177</span> kcal</p>
+          <div class="fullRecipe hidden">
+            <p><b>Full Recipe:</b></p>
+            <ol>
+              <li>Heat the oil in a pan over medium heat.</li>
+              <li>Add the peppers to the pan and cook for 5 minutes, stirring occasionally.</li>
+              <li>Add the chopped tomatoes to the pan and cook for another 5 minutes, stirring occasionally.</li>
+              <li>Season with salt and any desired spices.</li>
+              <li>Break the eggs into the pan and cook until set to your preference, about 2-3 minutes.</li>
+              <li>If desired, top with grated cheddar cheese and serve immediately.</li>
+            </ol>
+          </div>
+          <button onclick="toggleFullRecipe('menemenRecipe')">Display Full Recipe</button><br><br><br><br><br><br><br><br>
+          <label for="eggCount">Select the number of eggs:</label>
+          <select id="eggCount" onchange="calculateMenemenCalories()">
+            <option value="3" selected>3 eggs</option>
+            <option value="4">4 eggs</option>
+            <option value="5">5 eggs</option>
+          </select>
+          <span id="calorieInfo">Total Calories for selected eggs: <span id="totalCalories">177</span> kcal</span>
+        </div>
+      </div>
+    </section>
+ 
+  <section class="recipe" id="curdCheeseRecipe">
+    <div class="recipeContent">
+        <div class="imageContainer">
+            <h2>Curd Cheese Salad</h2>
+            <img src="Cheese.jpg" alt="Curd Cheese Salad">
+        </div>
+        <div class="recipeDetails">
+            <p><b><i>Ingredients:</i></b></p>
+            <ul id="ingredientsList2">
+                <li id="cheeseIngredient">150 grams of curd cheese</li>
+                <li>2 green peppers</li>
+                <li>2 tomatoes</li>
+                <li>Lettuce</li>
+                <li>Half a lemon</li>
+                <li>2 tablespoons of olive oil</li>
+            </ul>
+            <div class="fullRecipe hidden">
+                <p><b>Full Recipe:</b></p>
+                <ol>
+                    <li>Cottage cheese is torn into pieces and placed in a bowl.</li>
+                    <li>Wash the vegetables, preferably soak them in vinegar water, and after drying, chop them and add them to the salad bowl.</li>
+                    <li>Add lemon and olive oil and mix the salad thoroughly. Add the desired spices, Enjoy your meal!</li>
+                </ol>
+            </div>
+            <button onclick="toggleFullRecipe('curdCheeseRecipe')">Display Full Recipe</button><br><br><br><br><br><br><br><br>
+            <label for="cheeseWeight">Select the weight of cheese:</label>
+            <select id="cheeseWeight" onchange="calculateCurdCheeseCalories()">
+                <option value="150" selected>150 gr</option>
+                <option value="300">300 gr</option>
+            </select>
+            <span id="calorieInfoCurdCheese">Total Calories for selected cheese: <span id="totalCaloriesCurdCheese">0</span> kcal</span>
+        </div>
+    </div>
+</section>
+
+
+
+
+     <section class="recipe" id="DietMosaicCakeRecipe">
+      <div class="recipeContent">
+        <div class="imageContainer">
+          <h2>Diet Mosaic Cake</h2>
+          <img src="Cake.jpg" alt="Diet Mosaic Cake">
+        </div>
+        <div class="recipeDetails">
+          <p><b><i>Ingredients:</i></b></p>
+          <ul>
+            <li>100 grams of oatmeal</li>
+            <li>1 banana</li>
+            <li>1 glass of hot water</li>
+            <li>1 tablespoon cocoa</li>
+            <li>1 tablespoon of honey (crushed dates, carob flour or molasses can be added as an alternative.)</li>
+            <li>1 scoop of chocolate protein powder (not necessary, if not added, the amount of honey can be increased.)</li>
+            <li>Desired amount of walnuts (I added 4 small walnuts.)</li>
+          </ul>
+          <div class="fullRecipe hidden">
+            <p><b>Full Recipe:</b></p>
+            <ol>
+              <li>Place the oats in a large bowl, add hot water and let them cool at room temperature for 15-20 minutes.</li>
+              <li>After it has cooled, add cocoa and protein powder, if any, and mix well.</li>
+              <li>Mash the banana and add honey. Shred the banana thoroughly using a fork and mix.</li>
+              <li>Add walnuts.</li>
+              <li>Pour the mixture into wax paper, wrap it and leave it in the freezer for about 2 hours.</li>
+              <li>Our mosaic cake is ready to slice and eat.</li>
+            </ol>
+          </div>
+          <button onclick="toggleFullRecipe('DietMosaicCakeRecipe')">Display Full Recipe</button><br><br><br><br><br><br><br><br>
+        <label for="oatWeight">Select the weight of oatmeal:</label>
+          <select id="oatWeight" onchange="calculateMosaicCakeCalories()">
+            <option value="100" selected>100 gr</option>
+            <option value="150">150 gr</option>
+          </select>
+          <span id="calorieInfoMosaicCake">Total Calories for selected oatmeal: <span id="totalCaloriesMosaicCake">745</span> kcal</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="recipe" id="ChickenwithPestoSauceRecipe">
+      <div class="recipeContent">
+        <div class="imageContainer">
+          <h2>Chicken with Pesto Sauce</h2>
+          <img src="Pesto.jpg" alt="Chicken with Pesto Sauce">
+        </div>
+        <div class="recipeDetails">
+          <p><b><i>Ingredients:</i></b></p>
+          <ul>
+            <li>700 grams of chicken breast</li>
+            <li>4 tablespoons of olive oil</li>
+            <li>2 medium sized tomatoes</li>
+            <li>2 green peppers</li>
+            <li>3 tablespoons pesto sauce</li>
+            <li>Black pepper, salt and desired spices</li>
+          </ul>
+          <div class="fullRecipe hidden">
+            <p><b>Full Recipe:</b></p>
+            <ol>
+              <li>Chickens are cut into cubes.</li>
+              <li>Add 3 tablespoons of olive oil to the pot, and when it gets hot, add the chicken.</li>
+              <li>After sprinkling salt and pepper on it, mix it with a spoon, seal it and bring the chicken to a half-cooked state.</li>
+              <li>Transfer the chickens from the pot to another bowl, leave the chicken broth in the pot and add 1 tablespoon of olive oil. Then, the diced tomatoes and peppers are placed in the pot and cooked.</li>
+              <li>After the tomatoes release their juices, add the half-cooked chicken and pesto sauce to the pot and cook by stirring.</li>
+            </ol>
+          </div>
+          <button onclick="toggleFullRecipe('ChickenwithPestoSauceRecipe')">Display Full Recipe</button><br><br><br><br><br><br><br><br>
+        <label for="chickenWeight">Select the weight of chicken:</label>
+          <select id="chickenWeight" onchange="calculateChickenCalories()">
+            <option value="400">400 gr</option>
+            <option value="700" selected>700 gr</option>
+            <option value="1000">1000 gr</option>
+          </select>
+          <span id="calorieInfoChicken">Total Calories for selected chicken: <span id="totalCaloriesChicken">1440</span> kcal</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function toggleFullRecipe(recipeId) {
+      const fullRecipe = document.getElementById(recipeId).querySelector('.fullRecipe');
+      fullRecipe.classList.toggle('hidden');
+    }
+  function calculateMenemenCalories() {
+      const eggCount = document.getElementById("eggCount").value;
+      const caloriesPerEgg = 59;
+      const totalCalories = caloriesPerEgg * eggCount;
+
+      document.getElementById("eggIngredient").innerText = eggCount + " eggs";
+      document.getElementById("totalCalories").innerText = totalCalories;
+      document.getElementById("calorieInfo").innerText = "Total Calories for selected eggs (According to your preferences): " + totalCalories + " kcal";
+    }
+
+  
+    const defaultCheeseWeight = 150;
+    const defaultCalories = 388;
+    let caloriesPerGram = defaultCalories / defaultCheeseWeight;
+
+    
+    function calculateCurdCheeseCalories() {
+        const cheeseWeight = parseInt(document.getElementById("cheeseWeight").value); 
+
+        
+        let totalCalories;
+        if (cheeseWeight === 150) {
+            totalCalories = defaultCalories;
+        } else if (cheeseWeight === 300) {
+            totalCalories = 588; 
+        } else {
+            
+            totalCalories = (caloriesPerGram * cheeseWeight).toFixed(0);
+        }
+        document.getElementById("totalCaloriesCurdCheese").innerText = totalCalories + " kcal";
+
+       
+        document.getElementById("cheeseIngredient").innerText = cheeseWeight + " grams of curd cheese";
+        if (cheeseWeight !== 300) {
+            caloriesPerGram = totalCalories / cheeseWeight; 
+        }
+    }
+
+    
+    document.addEventListener("DOMContentLoaded", function () {
+        // Varsayılan peynir ağırlığını ve kaloriyi göster
+        document.getElementById("cheeseWeight").value = defaultCheeseWeight;
+        document.getElementById("totalCaloriesCurdCheese").innerText = defaultCalories + " kcal";
+    });
+
+
+
+
+
+
+ const defaultOatWeight = 100;
+    const defaultCaloriesMosaicCake = 745;
+    let caloriesPerGramMosaicCake = defaultCaloriesMosaicCake / defaultOatWeight;
+
+    
+    function calculateMosaicCakeCalories() {
+        const oatWeight = parseInt(document.getElementById("oatWeight").value); // Seçilen yulaf ağırlığı
+
+        
+        let totalCaloriesMosaicCake;
+        if (oatWeight === 100) {
+            totalCaloriesMosaicCake = defaultCaloriesMosaicCake;
+        } else if (oatWeight === 150) {
+            totalCaloriesMosaicCake = 939; 
+        } else {
+            
+            totalCaloriesMosaicCake = (caloriesPerGramMosaicCake * oatWeight).toFixed(0);
+        }
+        document.getElementById("totalCaloriesMosaicCake").innerText = totalCaloriesMosaicCake + " kcal";
+
+        
+        document.getElementById("oatIngredient").innerText = oatWeight + " grams of oatmeal";
+        if (oatWeight !== 150) {
+            caloriesPerGramMosaicCake = totalCaloriesMosaicCake / oatWeight; 
+        }
+    }
+
+    
+    document.addEventListener("DOMContentLoaded", function () {
+        
+        document.getElementById("oatWeight").value = defaultOatWeight;
+        document.getElementById("totalCaloriesMosaicCake").innerText = defaultCaloriesMosaicCake + " kcal";
+    });
+
+
+ const defaultChickenWeight = 700;
+    const defaultCaloriesChicken = 1440;
+    let caloriesPerGramChicken = defaultCaloriesChicken / defaultChickenWeight;
+
+    
+    function calculateChickenCalories() {
+        const chickenWeight = parseInt(document.getElementById("chickenWeight").value); 
+
+       
+        let totalCaloriesChicken;
+        if (chickenWeight === 400) {
+            totalCaloriesChicken = 960; 
+        } else if (chickenWeight === 700) {
+            totalCaloriesChicken = defaultCaloriesChicken;
+        } else if (chickenWeight === 1000) {
+            totalCaloriesChicken = 1920; 
+        } else {
+            
+            totalCaloriesChicken = (caloriesPerGramChicken * chickenWeight).toFixed(0);
+        }
+        document.getElementById("totalCaloriesChicken").innerText = totalCaloriesChicken + " kcal";
+
+       
+        document.getElementById("chickenIngredient").innerText = chickenWeight + " grams of chicken breast";
+        if (chickenWeight !== 400 && chickenWeight !== 1000) {
+            caloriesPerGramChicken = totalCaloriesChicken / chickenWeight; 
+        }
+    }
+
+    // Sayfa yüklendiğinde varsayılan değerleri göstermek için
+    document.addEventListener("DOMContentLoaded", function () {
+       
+        document.getElementById("chickenWeight").value = defaultChickenWeight;
+        document.getElementById("totalCaloriesChicken").innerText = defaultCaloriesChicken + " kcal";
+    });
+  </script>
+
+</body>
+</html>

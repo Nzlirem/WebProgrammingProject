@@ -1,0 +1,283 @@
+<DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kişisel Asistan</title>
+    <style>
+
+       body {
+        margin: 0;
+        font-family: 'Arial', sans-serif;
+        background-color: white; 
+        color: white; 
+        line-height: 1.6;
+        overflow: auto;
+    }
+
+        nav {
+            background-color: #BD9588; 
+            padding: 1em;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        nav a:hover {
+            color: #825745; 
+        }
+
+         main {
+            position: centralized;
+            padding: 20px;
+            text-align: center;
+            height: 80vh; 
+        }
+
+        @keyframes shakeText {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+      
+
+        h1 {
+            margin-bottom: 0.5em;
+            font-size: 2.0em;
+            color: #5F3C3C;
+        }
+
+        p {
+            font-size: 1.0em;
+            line-height: 2em;
+            color: white;
+        }
+
+      
+       #source {
+            margin-top: 15px;
+            font-size: 14px;
+            color: black;
+        }
+
+        #source a {
+            color: black;
+        }
+
+        #source a:hover {
+            text-decoration: underline;
+        }
+
+          footer p {
+            margin: 0;
+        }
+        
+    </style>
+    <script src="main.js" defer></script>
+</head>
+<body>
+    <header>
+
+    </header>
+    <nav>
+          <ul>
+            <li><a href="anasayfa.html">Home</a></li>
+            <li><a href="notlarım.html">Notes</a></li>
+            <li><a href="havadurumu.html">Weather</a></li>
+            <li><a href="BMI.html">BMI</a></li>
+            <li><a href="zodiacs4.html">Zodiacs</a></li>
+            <li><a href="gallery.html">My Gallery</a></li>
+            <li><a href="page7.html">Sayfa 7</a></li>
+            <li><a href="page8.html">Sayfa 8</a></li>
+            <li><a href="page9.html">Sayfa 9</a></li>
+            <li><a href="page10.html">Sayfa 10</a></li>
+            <li><a href="page11.html">Sayfa 11</a></li>
+            <li><a href="page12.html">Sayfa 12</a></li>
+            <li><a href="page13.html">Sayfa 13</a></li>
+        </ul>
+    </nav>
+    <main>
+      
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zodiac Signs</title>
+    <link rel="stylesheet" href="styles.css">
+
+      
+<style>
+
+        h1 {
+            color: white;
+            text-align: center;
+            font-family: Courier;
+            font-size: 30px;
+            background-color: #fff;
+            padding: 30px;
+            margin: 10px;
+            border: 3px solid #bd9588;
+            border-radius: 10px;
+            background-color: #d8c1b9;
+        }
+
+        .zodiac-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .zodiac {
+            padding: 20px;
+            background-color: #fff;
+            color: #000;
+            cursor: pointer;
+            transition: background-color 0.5s;
+            border: 2px solid #000;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .zodiac:hover {
+            background-color: #d8c1b9;
+            color: #fff;
+        }
+
+      .zodiac-feature {
+        margin-top: 35px;
+        padding: 15px;
+        background-color: #d8c1b9;
+        color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      
+    }
+
+    .zodiac-feature p {
+        font-size: 16px;
+        line-height: 1.5; 
+         
+     
+    }
+    </style>
+
+<body>
+    <h1>Zodiac Signs</h1>
+
+
+    <div class="zodiac-container">
+    
+       <div class="zodiac" id="aries">Aries</div>
+        <div class="zodiac" id="taurus">Taurus</div>
+        <div class="zodiac" id="gemini">Gemini</div>
+        <div class="zodiac" id="cancer">Cancer</div>
+        <div class="zodiac" id="leo">Leo</div>
+        <div class="zodiac" id="virgo">Virgo</div>
+        <div class="zodiac" id="libra">Libra</div>
+        <div class="zodiac" id="scorpio">Scorpio</div>
+        <div class="zodiac" id="sagittarius">Sagittarius</div>
+        <div class="zodiac" id="capricorn">Capricorn</div>
+        <div class="zodiac" id="aquarius">Aquarius</div>
+        <div class="zodiac" id="pisces">Pisces</div>
+      
+    </div>
+    <div class="zodiac-feature" id="features">
+    
+    </div>
+    <script>
+      var zodiacFeatures = {
+    aries: {
+      title:"Aries",
+      description:"The <strong>Aries</strong> star sign, born between March 21st and April 20th, are loud, proud, strong and brave. They are the ~baby~ of the zodiac, only in that they are the first sign and therefore the most ~raw~ with their needs, demands and emotions. They can, tbf, be pretty needy. Aries command your total attention, loyalty and capacity to entertain them… They get bored REAL fast. <br> Aries have a very warm and passionate nature. Their Mars ruler makes them competitive and full-on too. They have a big presence, they can light up a room. And, mostly, they’re lovely to be around because they genuinely care about other people. Just don’t get into a competition with them, because we all know how that will end up.</br> To get an idea of the classic Aries personality traits and types, we need only to look to some of the most famous rams (the sign’s animal): Lady Gaga, Sarah Jessica Parker, Mariah Carey and Chance the Rapper to name a few.This lot likes winning, getting attention and being on top",
+  imageSrc: "aries.png"
+    },
+    taurus: {
+      title: "Taurus",
+    description: "What do you know about <strong>Taurus</strong> traits? It's a misunderstood star sign. Many people think of Taureans as laidback, even lazy, and extremely stubborn. Sure, they CAN come off like this sometimes, but actually those behaviours are driven by a more intellectual and analytical nature than they’re credited with.<br>People who are Taurus, born between April 21 and May 21, ponder deeply on all matters - love, life, money, work, the weather, last year’s Love Island. They deconstruct situations carefully, pull them apart in order to understand how things work and what makes people tick. This takes a while (hence them seeming lazy) and when it’s done means that their conclusions are thorough and rock-solid (hence why they seem stubborn, because they know their own mind).</br><br>To get an idea of the classic Taurean personality traits and types, we need only to look to some of the most famous bulls (the sign’s spirit animal): Adele, Rami Malek, David Beckham, Queen Elizabeth, Kelly Clarkson, Cate Blanchett and Cher to name a few.</br><br>Taureans can be gentle and they can be fierce, they don’t like to be pushed, they have strong opinions, and they love their home comforts.</br>"
+    },
+    gemini: {
+      title: "Gemini",
+      description:"<strong>Gemini</strong> is the star sign born between May 22 and June 22, and belong to the Air element of the zodiac (along with Libra and Aquarius). Their main Gemini traits are being super-fast, super-smart, super-adaptable and super-curious people. All of this super-ness makes them fascinating to be around, albeit usually only for short spells because they can a) wear you out, b) get easily distracted elsewhere and before you know it, they’re off.<br> Geminis like variety, keeping their options open, having lots of opportunities on the go, and being ~in the know~ about anything, everything, and everyone. Notorious gossips! They are generally kind, but there is a slither of chilliness and detachment, created by their Air element and twin nature. You never quite know which Gemini is showing up, and there’s always one in the background taking notes, and keeping secrets.</br><br> To get an idea of the classic Gemini personality traits and types, we need only to look to some of the most famous twins (the star sign’s symbol): Kanye West, Kylie Minogue, Tupac, Marilyn Monroe, Angelina Jolie and Donald Trump (sorry) to name a few. These guys ALL have big personalities.</br>"
+    },
+    cancer:{
+        title: "Cancer",
+        description: "The <strong>Cancer</strong> star signs dates are between 21st June and 22nd July and the zodiac sign is intense, incredibly charismatic and attractive, but also possessive and moody. They can turn on a sixpence. Ruled by the Moon, they are passionate, creative, secretive, intuitive, and caring.<br>Cancerians command your total loyalty and undivided attention, but they will return it in droves. A ride or die friend and partner. They are always interested in you, and have a knack of ~getting~ exactly how you truly feel, even when you don’t say it out loud. They are mind readers! They do expect you to be fully into them too, and will go to great lengths to illicit the sympathy and interest of others. They can be a lil’ dramatic and attention-seeking tbh, and this trait can cause them more relationship woes than they realise.</br><br>To get an idea of the classic Cancerian personality traits and types, we need only to look to some of the most famous crabs (the sign’s symbol): Princess Diana, Ariana Grande, Selena Gomez, Solange Knowles, Nicole Scherzinger, and Lindsay Lohan. You could say all of these people wear their heart on their sleeve.</br>"
+      },
+    leo: {
+      title: "Leo",
+        description:"<strong>Leos</strong> are the star sign born between 23rd July 23 and 22nd August and are ruled by the Sun. This perfectly represents their innate belief that they are the centre-of-the-universe! That sounds annoying AF (it can be), but mostly you’ll be happy to let them take centre-stage because they work hard for it. This sign of the zodiac is charming, warm, welcoming, funny, protective, and generally great company.<br>Leos love to lead, perform, talk, be admired and receive the praise and respect of others. They are naturally regal, and always assume a boss-like stance in any relationship or group dynamic. They are confident, bright and sexy people, though they can be jealous, controlling and possessive at their worst.</br><br>To get an idea of the classic Leo personality traits and types, we need only to look to some of the most famous lions (the sign’s symbol): Madonna, Jennifer Lopez, Kylie Jenner, Sandra Bullock.</br>"
+    }, 
+    virgo: {
+      title:"Virgo",
+        description: "<strong>Virgos</strong> is the star sign born between August 23 and September 22, look like a swan, all elegant and serene, but underneath their ~paddlers~ are paddling furious. This zodiac sign works HARD at coming off all effortless and perfect. They have extremely high standards, none more so than for themselves, and they obsess over everything. They are fantastic detail-people, love organising stuff, and can be relied on to make everything go smoothly.<br>Virgos can come off as uptight or critical, but actually their Mercury ruler does present a lighter side to their character. They love gossip, information, education, entertainment. Their mind is sharp, bright and shrewd. Virgos make great friends, they are 100% solid and also (secretly) naughty fun.</br><br>To get an idea of the classic Virgo personality traits and types, we need only to look to some of the most famous virgins (the sign’s symbol - not literal, obvs…) - Beyonce, Pink, Keanu Reeves, Cameron Diaz, and Blake Lively.</br>"
+    },
+    libra: {
+      title:"Libra",
+        description: "<strong>Librans</strong> are the slick, smart, charmers of the zodiac. Their star sign dates are between September 23 and October 22, and belong to the Air element of the zodiac (along with Gemini and Aquarius).<br>Always tactful, pleasing and diplomatic - they can fit in anyplace, anytime, with anyone. Shape-shifting is almost a sport to Libra, and they enjoy mingling and socialising with different squads and crews. You can find them lounging and flirting anywhere - being the centre of attention and loved by all around.</br><br>Libras love to think, analyse, ponder and dissect stuff, which makes them champion procrastinators too. They love to take an objective viewpoint, find the fairest solution to any issue, and enjoy learning new information. They need mental stimulus.</br><br>They hate mess, chaos, disorder and conflict, and that is where their uber-diplomacy comes in real handy.</br><br>To get an idea of the classic Libran personality traits and types, we need only to look to some of the most famous autumn babies: Kim Kardashian, Serena Williams, Bella Hadid, Cardi B, Gwen Stefani and Halsey.</br>"
+    },
+    scorpio: {
+      title:"Scorpio",
+        description: "<strong>Scorpios'</strong> star sign dates are between 23rd October and 1st November, and belong to the Water element of the zodiac (along with Cancer and Pisces).<br>Scorpio character traits include being <strong>strong, enigmatic and independent</strong> characters who crackle with an intensity and charisma that makes them un-ignorable. For all of that power though, they often remain unknowable to others, because they guard themselves and their private lives fiercely.</br><br>You can bet there’s something juicy going on, under the wraps, though, because Scorpios like extremes, challenges, danger and darkness. They are, because of their planetary ruler Pluto, drawn to the outliers of human experience. If it’s kinky, risky or thrilling, a Scorpio will be involved somehow!</br><br>Scorpios are loyal, smart, shrewd and stoic. They stand by their beliefs, and they don’t crave anyone else’s approval.</br><br>Scorpio is like the big, bad older sister of the Water sign crew. You don’t mess with the turbulent, deadly scorpion my friend, their sting can be fatal - and they make the other signs of the zodiac (apart from maybe Aries, who they share a planetary influence with) look like wusses!</br><br>To get an idea of the classic Scorpio personality traits and types, we need only to look to some of the most famous Halloween children: Drake, Kendall Jenner, Emma Stone, Ryan Reynolds and Ciara.</br>"
+    },
+     
+    sagittarius: {
+      title:"Sagittarius",
+        description: "<strong>Sagittarius</strong> is the star sign with a birthday which dates between 22nd November and 21st December, and belong to the Fire element of the zodiac (along with Leo and Aries). <br> Sagittarians are the bright and breezy sign of the zodiac - all big hugs, bouncy energy and lots of laughs. They have zero filters, which makes them spontaneous, rude, honest, hilarious and challenging. If you know a Sagittarian, you’ll know all about this! They’ll have said things to you which ~scorched~, but five minutes later, all is well again. You just can’t stay mad at them.</br> <br>Sagittarians are lively, passionate, smart and more philosophical than their clown-y energy may hint at. They love to feel free and resist rules, regulations, constraints and schedules. They just like doing what they do, when they wanna do it. They're born travellers, adventurers, explorers and free spirits.</br><br>They are ruled by Jupiter, which makes them all jammy so-and-sos, who (no matter how absurd an escapade they pursue) often land on their feet and smelling of roses. Sagittarians are great companions for wild weekends.</br><br>To get an idea of the classic Sagittarius personality traits and types, we need only to look to some of the most famous archers: Brad Pitt, Chrissy Teigen, Miley Cyrus, Taylor Swift, Jay-Z, Britney Spears, Tyra Banks. These guys are never dull.</br>"
+    },
+    capricorn: {
+      title:"Capricorn",
+        description: "<strong>Capricorn</strong> dates fit into the star sign dates between 22nd December and 20th January, and belong to the Earth element of the zodiac (along with Taurus and Virgo - who they happen to be incredibly compatible with, romantically). The Earth sign crew are all practical, self reliant, stoic and ambitious. You'd want them in your corner... but maybe not at a party.<br>Capricorns are the hardest workers of the zodiac and love nothing more than getting ahead in life. They are ambitious, determined, materialistic and strong. They will keep going when others would’ve given up ten miles back. This makes them great partners in life, as well as friends or collaborators.</br><br>Capricorns tend to keep small circles, but are loyal and supportive of their friends and loved ones. They love creating secure, luxurious ~nests~ and living a comfortable, enviable lifestyle. Living well is important to them. Capricorns are born shrewd, they ~get~ what makes others tick, and they are self-aware of their own needs and traits too. Caps are good people!</br><br>To get an idea of the classic Capricorn personality traits and types, we need only to look to some of the most famous celeb Capricorns: Kate Middleton, Michelle Obama, Dolly Parton, Bradley Cooper, Zayn Malik, John Legend and Liam Hemsworth, to name a few.</br>"
+    },
+    aquarius:{
+      title:"Aquarius",
+        description: "<strong>Aquarians</strong> have the star sign dates between January 21st and February 19th, and belong to the Air element of the zodiac (along with Gemini and Libra - who they have the most romantic compatibility with, FYI). Aquarians are ruled by Uranus, which is the planet of invention, innovation, space travel and aerodynamics. Aquarians not only want to save the world, but they’ve got the engineering and intellectual smarts to actually have a plan on how to do it too.<br>Aquarius’s symbol is the water bearer, which many believe represents the gifts of truth and pure intentions that they bring to the world. Aquarians are very upfront people, and they don’t do shenanigans or shady business. They’ll tell you how it is and feel no two ways about it if you don’t like it. Some people find them aloof or cold, but they just keep their emotions more buttoned down than most.</br><br>To get an idea of the classic Aquarius personality traits and types, we need only to look to some famous Aquarians: Harry Styles, Alicia Keys, Kerry Washington, Jennifer Aniston, Shakira and Oprah Winfrey to name a few.</br><br>This lot dance to their own beat, for sure.</br>"
+    },
+    pisces:{
+      title:"Pisces",
+        description: "<strong>Pisces</strong> have the star sign dates between 20th February - 20th March and are ruled by the double whammy of Neptune (psychic, esoteric planet of mystery) and Jupiter (lucky son-of-a-gun planet of abundance.) So, the zodiac sign is both secretive and expansive, magical and worldly, soulful and joyful. Pisceans, a water sign, are worldly wise ~old souls~ with enormous depths of compassion and empathy for others.<br>Pisceans’ symbol in the horoscope is two fishes facing opposite directions, this reflects the duality of their continual inner struggle. On the one hand, they want to be successful, busy, driven and active, but on the other hand, they just want to pull the covers over their head and stay in bed. Life is hard for Pisceans; they pick up on ALL the vibes.</br><br>To get an idea of the classic Pisces personality traits and types, we need only to look to some of the most famous fishes: Justin Bieber, Rihanna, Drew Barrymore, Emily Blunt, Chelsea Handler, Rebel Wilson, Common and Dakota Fanning.</br>"
+    },
+};
+
+var featuresDiv = document.getElementById('features');
+
+    document.querySelectorAll('.zodiac').forEach(function (zodiac) {
+        zodiac.addEventListener('click', function () {
+            var zodiacId = this.id;
+            var zodiacData = zodiacFeatures[zodiacId];
+            
+            if (zodiacData) {
+                featuresDiv.innerHTML = `<h2>${zodiacData.title}</h2><p>${zodiacData.description}</p>`;
+            } else {
+                featuresDiv.innerHTML = 'Zodiac data not found.';
+            }
+        });
+    });
+</script>
+</body>
+      <div id="source">
+        <p style=color:777472;><i>Access to source for zodiac features</i> <a href="https://www.cosmopolitan.com/">Cosmopolitan</a></p>
+    </div>
+    
+</html>

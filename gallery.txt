@@ -1,0 +1,169 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kişisel Asistan</title>
+    <style>
+      body {
+            font-family: 'Arial', sans-serif;
+            background-color: white; 
+            color: white; 
+            line-height: 1.6;
+            margin: 0;
+            overflow: auto;
+        }
+
+        nav {
+            background-color: #BD9588; 
+            padding: 1em;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        nav a:hover {
+            color: #825745; 
+        }
+
+
+          main {
+            position: centralized;
+            padding: 20px;
+            text-align: center;
+            height: 80vh; 
+        }
+    
+
+        h1 {
+            margin-bottom: 0.5em;
+            font-size: 2.5em; 
+            color: #800080; 
+        }
+
+        p {
+            font-size: 1.2em; 
+            line-height: 2em;
+            color: #333; 
+        }
+
+        footer p {
+            margin: 0;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .container img {
+            width: 33.33%;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+
+        .container input[type="text"] {
+            width: 100%;
+            margin-top: 5px;
+        }
+
+        .container hr {
+            width: 100%;
+            margin-top: 5px;
+            border: none;
+            border-top: 1px solid #ccc;
+        }
+    </style>
+    <script src="main.js" defer></script>
+</head>
+<body>
+    <nav>
+         <ul>
+            <li><a href="anasayfa.html">Home</a></li>
+            <li><a href="notlarım.html">Notes</a></li>
+            <li><a href="havadurumu.html">Weather</a></li>
+            <li><a href="BMI.html">BMI</a></li>
+            <li><a href="zodiacs4.html">Zodiacs</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="page7.html">Sayfa 7</a></li>
+            <li><a href="page8.html">Sayfa 8</a></li>
+            <li><a href="page9.html">Sayfa 9</a></li>
+            <li><a href="page10.html">Sayfa 10</a></li>
+            <li><a href="page11.html">Sayfa 11</a></li>
+            <li><a href="page12.html">Sayfa 12</a></li>
+            <li><a href="page13.html">Sayfa 13</a></li>
+        </ul>
+    </nav>
+   <main>
+    <h1 style="color: black; font-size: 15px;">My Gallery</h1>
+    <div class="container">
+        <input type="file" id="photo-input" accept="image/*">
+        <button id="add-photo-button">Add a Photo</button>
+        <div id="photo-list"></div>
+    </div>
+       <script>
+    const addPhotoButton = document.getElementById('add-photo-button');
+    const photoListDiv = document.getElementById('photo-list');
+
+    addPhotoButton.addEventListener('click', () => {
+        const photoInput = document.getElementById('photo-input');
+
+        if (photoInput.files.length > 0) {
+            const photo = photoInput.files[0];
+            const photoURL = URL.createObjectURL(photo);
+
+            const newPhotoDiv = document.createElement('div');
+            newPhotoDiv.style.width = '33.33%'; // Yeni eklenen div'in genişliği
+            newPhotoDiv.style.padding = '5px';
+            newPhotoDiv.style.boxSizing = 'border-box';
+
+            const newPhoto = document.createElement('img');
+            newPhoto.src = photoURL;
+            newPhoto.alt = 'Uploaded Photo';
+            newPhoto.style.width = '100%'; // Resmin genişliği
+
+            newPhotoDiv.appendChild(newPhoto);
+            photoListDiv.appendChild(newPhotoDiv);
+
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.placeholder = 'Add a Note';
+            input.style.width = '100%'; // Input'un genişliği
+            photoListDiv.appendChild(input);
+
+            const hr = document.createElement('hr');
+            hr.style.width = '100%'; // Çizginin genişliği
+            photoListDiv.appendChild(hr);
+        } else {
+            alert('Please select a photo.');
+        }
+    });
+    </script>
+</main>
+
+</body>
+</html>

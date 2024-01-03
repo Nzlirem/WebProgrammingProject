@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #3498db;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        nav {
+            background-color: #3498db;
+            color: white;
+            padding: 1em;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: fixed; 
+            width: 100%; 
+            top: 0; 
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        nav a:hover {
+            color: #1253A3;
+        }
+
+        .container {
+            text-align: center;
+            color: #fff;
+            margin-top: 60px; 
+        }
+
+        .weather-info {
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        #location {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        #temperature {
+            font-size: 36px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        #description {
+            font-size: 18px;
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="anasayfa.html">Home</a></li>
+            <li><a href="notlarım.html">Notes</a></li>
+            <li><a href="havadurumu.html">Weather</a></li>
+            <li><a href="BMI.html">BMI</a></li>
+            <li><a href="recipie.html">Recipies</a></li>
+            <li><a href="zodiacs4.html">Zodiacs</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="taskmanager.html">Tasks</a></li>
+            <li><a href="shoppinglist.html">Shopping List</a></li>
+            <li><a href="HABIT15.html">My Habits</a></li>
+            <li><a href="saat.html">Time</a></li>
+            <li><a href="yenigoal.html">New Goals</a></li>
+            <li><a href="WWW.html">Travel Journal</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>WEATHER</h1>
+        <div class="weather-info">
+            <p id="location"></p>
+            <p id="temperature"></p>
+            <p id="description"></p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const apiKey = 'b68dfce680ab62efd5dd73f33b1fb615'; 
+            const city = 'Istanbul'; 
+
+            async function getWeather() {
+                try {
+                    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`);
+                    const data = await response.json();
+
+                    const location = data.name;
+                    const temperature = `${data.main.temp} °C`;
+                    const description = data.weather[0].description;
+
+                    document.getElementById('location').textContent = location;
+                    document.getElementById('temperature').textContent = temperature;
+                    document.getElementById('description').textContent = description;
+                } catch (error) {
+                    console.error('Weather could not be taken.', error);
+                }
+            }
+
+           getWeather();
+        }); 
+		
+    </script>
+</body>
+</html>

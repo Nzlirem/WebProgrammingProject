@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Goals</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', serif;
+            background-color: white;
+        }
+
+        .container {
+            overflow-y: auto; 
+            height: 100vh;  
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            background-color: #FFC0CB;
+            color: #FF0097;
+            font-family: 'Arial', serif;
+            padding: 10px;
+            text-align: center;
+        }
+
+        p, form, .category-title, .footer {
+            font-family: 'Arial', serif;
+            color: #006400;
+            font-size: 16px;
+        }
+
+        form {
+            color: #6A5ACD;
+        }
+
+        .category-section {
+            border: 1px solid #FF5DE4;
+            padding: 15px;
+            margin: 15px;
+            background-color: #FFD9EB;
+            border-radius: 10px;
+        }
+
+        .category-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer {
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            padding: 10px;
+            text-align: left;
+            background-color: #FFC0CB;
+            color: #8B8000;
+            font-family: 'Georgia', serif;
+            font-size: 20px;
+        }
+
+        nav {
+            background-color: #BD9588;
+            color: white;
+            padding: 1em;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        nav a:hover {
+            color: #825745;
+        }
+
+        .delete-button {
+            background-color: #ff6666;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            font-size: 14px;
+            margin-left: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .delete-button:hover {
+            background-color: #cc0000;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="anasayfa.html">Home</a></li>
+            <li><a href="notlarım.html">Notes</a></li>
+            <li><a href="havadurumu.html">Weather</a></li>
+            <li><a href="BMI.html">BMI</a></li>
+            <li><a href="recipie.html">Recipies</a></li>
+            <li><a href="zodiacs4.html">Zodiacs</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="taskmanager.html">Tasks</a></li>
+            <li><a href="shoppinglist.html">Shopping List</a></li>
+            <li><a href="HABIT15.html">My Habits</a></li>
+            <li><a href="saat.html">Time</a></li>
+            <li><a href="yenigoal.html">New Goals</a></li>
+            <li><a href="WWW.html">Travel Journal</a></li>
+        </ul>
+    </nav>
+
+   
+    <div class="container">
+        <div class="content">
+            <h1>My Goals</h1>
+
+            <p>Welcome to "My Goals" page! This is your space where you can write down your life goals in different categories such as education, health, personal, and finance. Use the form below to add your goals, and see them in categorized way.</p>
+
+            <form id="lifeGoalsForm">
+                <label for="lifeGoal">Add a Life Goal:</label>
+                <input type="text" id="lifeGoal" required>
+                <label for="category">Select Category:</label>
+                <select id="category">
+                    <option value="education">Education</option>
+                    <option value="health">Health</option>
+                    <option value="personal">Personal</option>
+                    <option value="finance">Finance</option>
+                </select>
+                <button type="button" onclick="addLifeGoal()">Add Goal</button>
+            </form>
+
+            <div class="category-section top-left" id="educationSection">
+                <h2 class="category-title">Education</h2>
+                <ul class="category-list" id="educationList"></ul>
+            </div>
+
+            <div class="category-section top-right" id="healthSection">
+                <h2 class="category-title">Health</h2>
+                <ul class="category-list" id="healthList"></ul>
+            </div>
+
+            <div class="category-section bottom-left" id="personalSection">
+                <h2 class="category-title">Personal</h2>
+                <ul class="category-list" id="personalList"></ul>
+            </div>
+
+            <div class="category-section bottom-right" id="financeSection">
+                <h2 class="category-title">Finance</h2>
+                <ul class="category-list" id="financeList"></ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>A little progress each day adds up to big results! Stay motivated!</p>
+    </div>
+
+    <script>
+        function addLifeGoal() {
+            var lifeGoal = document.getElementById("lifeGoal").value;
+            var category = document.getElementById("category").value;
+
+            if (lifeGoal.trim() !== "") {
+                var listItem = document.createElement("li");
+                listItem.appendChild(document.createTextNode(lifeGoal));
+
+                var deleteButton = document.createElement("button");
+                deleteButton.appendChild(document.createTextNode("Delete Goal"));
+                deleteButton.className = "delete-button";
+                deleteButton.onclick = function() {
+                    listItem.remove();
+                };
+
+                listItem.appendChild(deleteButton);
+
+                switch (category) {
+                    case "education":
+                        document.getElementById("educationList").appendChild(listItem);
+                        break;
+                    case "health":
+                        document.getElementById("healthList").appendChild(listItem);
+                        break;
+                    case "personal":
+                        document.getElementById("personalList").appendChild(listItem);
+                        break;
+                    case "finance":
+                        document.getElementById("financeList").appendChild(listItem);
+                        break;
+                    default:
+                        break;
+                }
+
+                document.getElementById("lifeGoal").value = "";
+            }
+        }
+    </script>
+</body>
+</html>
